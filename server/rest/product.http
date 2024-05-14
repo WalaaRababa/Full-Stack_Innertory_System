@@ -1,0 +1,27 @@
+GET http://localhost:3000/product HTTP/1.1
+
+###
+POST http://localhost:3000/product HTTP/1.1
+content-type: application/json
+
+{
+    "title":"tephone",
+    "description":"electronic",
+    "price":130.8,
+    "stockQuantity":155
+}
+###
+GET http://localhost:3000/product/sortby-price-dec HTTP/1.1
+
+### 
+PATCH  http://localhost:3000/product/1 HTTP/1.1
+content-type: application/json
+
+{
+   "price":154.5
+}
+###
+DELETE  http://localhost:3000/product/5 HTTP/1.1
+###
+
+GET http://localhost:3000/product/by-range-price?min=100.0&max=110.0 HTTP/1.1
