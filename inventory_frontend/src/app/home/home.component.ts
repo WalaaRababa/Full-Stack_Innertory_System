@@ -3,17 +3,19 @@ import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { ProductService } from '../services/product.service';
 import Product from '../interface/product';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
   constructor(private productService: ProductService) { }
   products = signal<Product[] | null>([])
+  title:string='';
   ngOnInit(): void {
     this.getAllProduct()
   }
@@ -30,7 +32,16 @@ export class HomeComponent implements OnInit {
   }
   search()
   {
-    console.log("test");
+    console.log(this.title);
     
+    this.productService.searchProductByName(this.title).subscribe(res => {
+      console.log(res);
+
+      this.products.set(res)
+    }, error => {
+      console.log(error);
+
+    }
+    )
   }
 }

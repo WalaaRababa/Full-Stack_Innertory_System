@@ -19,4 +19,8 @@ getAllProduct()
     const headers=new HttpHeaders({ 'Authorization': `Bearer ${this.token}`})
     return this.http.get<Product[]|null>(this.url,{headers})
   }
+  searchProductByName(title:string)
+  {
+return this.http.post<Product[]|null>(this.url+`search/?title=${title}`,{})
+  }
 }
