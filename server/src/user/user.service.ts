@@ -49,8 +49,6 @@ export class UserService {
     try {
       const user = await this.userRepository.findOneBy({ email });
       if (!user) {
-        console.log(user);
-
         throw new HttpException({
           status: HttpStatus.NOT_FOUND,
           message: 'The email does not exist or The password you’ve entered is incorrect`',
@@ -73,14 +71,7 @@ export class UserService {
 
       }
     } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.INTERNAL_SERVER_ERROR,
-          message: error.massage,
-        },
-        HttpStatus.INTERNAL_SERVER_ERROR,
-        {},
-      );
+      throw error
     }
   }
 

@@ -24,7 +24,7 @@ export class ProductController {
   create(@Body() createProductDto: CreateProductDto) {
     return this.productService.create(createProductDto);
   }
-  @UseGuards(AuthGuard)
+  // @UseGuards(AuthGuard)
   @Get()
   findAll() {
     return this.productService.findAll();
