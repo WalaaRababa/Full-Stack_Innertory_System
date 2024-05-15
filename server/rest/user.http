@@ -1,0 +1,37 @@
+GET http://localhost:3000/user HTTP/1.1
+
+###
+POST http://localhost:3000/user/register HTTP/1.1
+content-type: application/json
+
+{
+    "email":"ali@gmail.com",
+    "password":"1234rdf",
+   "role":"admin"
+}
+###
+POST http://localhost:3000/user/login HTTP/1.1
+content-type: application/json
+
+{
+    "email":"ali@gmail.com",
+    "password":"1234rdf"
+}
+###
+
+
+
+GET http://localhost:3000/user/sortby-price-dec HTTP/1.1
+
+### 
+PATCH  http://localhost:3000/u/1 HTTP/1.1
+content-type: application/json
+
+{
+   "price":154.5
+}
+###
+DELETE  http://localhost:3000/product/5 HTTP/1.1
+###
+
+GET http://localhost:3000/product/by-range-price?min=100.0&max=110.0 HTTP/1.1
