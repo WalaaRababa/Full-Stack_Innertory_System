@@ -12,6 +12,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './auth/constants';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthorizationGuard } from './auth/authorization.guard';
+import { TransactionModule } from './transaction/transaction.module';
+import { Transaction } from './transaction/entities/transaction.entity';
 @Module({
   imports: [
     ProductModule,
@@ -22,12 +24,13 @@ import { AuthorizationGuard } from './auth/authorization.guard';
     username: process.env.DB_Username,
     password: process.env.DB_password,
     database: process.env.DB_database,
-    entities:[User,Product],
+    entities:[User,Product,Transaction],
     synchronize: true,}),
     UserModule,
     JwtModule.register({
       secret:jwtConstants.secret
     }),
+    TransactionModule,
   ],
   controllers: [AppController],
   providers: [AppService,AuthGuard,AuthorizationGuard],
@@ -35,16 +38,3 @@ import { AuthorizationGuard } from './auth/authorization.guard';
 })
 export class AppModule {}
 
-/*
-{
-      type: 'mysql',
-      host: process.env.Host,
-      port: parseInt(process.env.Port),
-      username: process.env.DB_Username,
-      password: process.env.DB_password,
-      database: process.env.DB_database,
-      entities: [Product, User],
-      synchronize: true,
-    }
-    
-    */

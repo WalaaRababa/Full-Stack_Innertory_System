@@ -44,28 +44,27 @@ export class ProductController {
     return this.productService.remove(+id);
   }
   @Post('sortby-price-dec')
-  findProductSortedByPriceDescending() {
+  sortDec() {
     return this.productService.findProductSortedByPriceDescending();
   }
-  // @Get('asc')
-  // findProductSortedByPriceAscending() {
-  //   return this.productService.findProductSortedByPriceAscending();
-  // }
-  // @Get('by-range-price')
-  // getByRangePrice (@Query('min', ParseFloatPipe) min: number,
-  // @Query('max', ParseFloatPipe) max: number,) {    
-  //   return this.productService.findByPriceRange(max,min)
-  // }
+  @Post('sortby-price-asc')
+  sortAsc() {
+    return this.productService.findProductSortedByPriceAscending();
+  }
   @Post('by-range-price')
-  test (@Query('min', ParseFloatPipe) min: number,
-  @Query('max', ParseFloatPipe) max: number,) {
+  test (@Body('min', ParseFloatPipe) min: number,
+  @Body('max', ParseFloatPipe) max: number,) {
     return this.productService.findByPriceRange(min,max);
   }
-   @Patch('search-by-name')
+   @Post('search-by-name')
 search(@Query('title') title:string )
 {
 return this.productService.searchByProductName(title)
 }
-   
+@Post('/search')
+async searchByProductName(@Query('title') title: string) {
+  return this.productService.searchByProductName(title);
+}
+
 
 }

@@ -33,9 +33,9 @@ export class UserService {
 
     } catch (error) {
       throw new HttpException({
-        status: HttpStatus.BAD_GATEWAY,
-        message: 'server error',
-      }, HttpStatus.BAD_GATEWAY, {
+        status: HttpStatus.INTERNAL_SERVER_ERROR,
+        message: 'An error occurred while registering employee',
+      }, HttpStatus.INTERNAL_SERVER_ERROR, {
       });
     }
   }
@@ -73,7 +73,14 @@ export class UserService {
 
       }
     } catch (error) {
-      throw error
+      throw new HttpException(
+        {
+          status: HttpStatus.INTERNAL_SERVER_ERROR,
+          message: error.massage,
+        },
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        {},
+      );
     }
   }
 
