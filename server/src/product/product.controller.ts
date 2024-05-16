@@ -19,6 +19,7 @@ import { AuthorizationGuard } from 'src/auth/authorization.guard';
 @Controller('product')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
+  @UseGuards(AuthGuard,AuthorizationGuard)
   @Post()
   create(@Body() createProductDto: CreateProductDto) {
     return this.productService.create(createProductDto);
