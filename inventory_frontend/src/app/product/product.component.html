@@ -1,0 +1,98 @@
+<div class="max-w-md mx-auto">
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" (submit)="createNewProduct($event)">
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+          Title
+        </label>
+        <div class="relative">
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="title"
+            name="title"
+            type="text"
+            placeholder="Title"
+            [(ngModel)]="product.title"
+          />
+          <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+            <svg
+              class="fill-current h-4 w-4 text-gray-500"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M3.77 16.807l-.26-1.296-1.035-.517a.5.5 0 0 0-.542.839l1.296 1.296a1 1 0 0 1 .2-.08zM12.5 13a.5.5 0 0 1-.5.5H3a1 1 0 0 1 0-2h9a.5.5 0 0 1 .5.5z"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M14.5 3a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h9zM5 10V4h9v6H5z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+          Description
+        </label>
+        <textarea
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="description"
+          name="description"
+          placeholder="Description"
+          [(ngModel)]="product.description"
+
+        ></textarea>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="quantity">
+          Quantity in Stock
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="quantity"
+          type="number"
+          name="stockQuantity"
+          placeholder="Quantity"
+          [(ngModel)]="product.stockQuantity"
+
+        />
+      </div>
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="price">
+          Price
+        </label>
+        <div class="relative">
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="price"
+            name="price"
+            type="number"
+            placeholder="Price"
+            [(ngModel)]="product.price"
+
+          />
+          <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+            <svg
+              class="fill-current h-4 w-4 text-gray-500"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 4a1 1 0 0 1 1 1v5h3a1 1 0 1 1 0 2h-3v2a1 1 0 0 1-2 0v-2H7a1 1 0 0 1 0-2h3V5a1 1 0 0 1 1-1z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-between">
+        <button
+          class="bg-indigo-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="submit"
+        >
+          Add Product
+        </button>
+      </div>
+    </form>
+  </div>
+  

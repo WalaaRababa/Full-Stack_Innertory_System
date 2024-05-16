@@ -18,17 +18,18 @@ export class ProductService {
   ) { }
   async create(createProductDto: CreateProductDto): Promise<Product> {
     try {
-      const result = await this.productRepository.save(createProductDto);
-      return result;
+      const product = await this.productRepository.create({
+        description: createProductDto.description,
+        price: createProductDto.price,
+        title: createProductDto.title,
+        stockQuantity: createProductDto.stockQuantity
+      });
+      return this.productRepository.save(product)
+  
     } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.BAD_GATEWAY,
-          message: error.massage,
-        },
-        HttpStatus.BAD_GATEWAY,
-        {},
-      );
+      console.log(error);
+      
+  
     }
   }
 

@@ -1,0 +1,13 @@
+<form (ngSubmit)="onSubmit()"  class="flex flex-row space-x-4">
+    <div class="flex-grow">
+      <label for="productId" class="block">Product ID:</label>
+      <input type="text" id="productId" formControlName="productId" class="w-full border-gray-300 rounded-md">
+    </div>
+    <div class="flex-grow">
+      <label for="quantity" class="block">Quantity:</label>
+      <input type="number" id="quantity" formControlName="quantity" class="w-full border-gray-300 rounded-md">
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+  
+  
