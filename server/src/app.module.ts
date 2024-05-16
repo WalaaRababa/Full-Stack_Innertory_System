@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductModule } from './product/product.module';
@@ -14,6 +14,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthorizationGuard } from './auth/authorization.guard';
 import { TransactionModule } from './transaction/transaction.module';
 import { Transaction } from './transaction/entities/transaction.entity';
+import { JsonMiddleware } from './json.middleware';
 @Module({
   imports: [
     ProductModule,
@@ -36,5 +37,9 @@ import { Transaction } from './transaction/entities/transaction.entity';
   providers: [AppService,AuthGuard,AuthorizationGuard],
 
 })
-export class AppModule {}
-
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    // Use the JsonMiddleware for all routes
+    consumer.apply(JsonMiddleware).forRoutes('*');
+  }
+}

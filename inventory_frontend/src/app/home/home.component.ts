@@ -16,6 +16,9 @@ import { FormsModule } from '@angular/forms';
 export class HomeComponent implements OnInit {
   constructor(private productService: ProductService) {}
   products = signal<Product[] | null>([]);
+  isDelete=signal<boolean>(false)
+  id=signal<number>(0)
+  productId:number=0
   title: string = '';
   ngOnInit(): void {
     this.getAllProduct();
@@ -32,7 +35,6 @@ export class HomeComponent implements OnInit {
     );
   }
   search() {
-    console.log(this.title);
 
     this.productService.searchProductByName(this.title).subscribe(
       (res) => {
@@ -45,13 +47,14 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-  deleteProduct(id: number) {
+  deleteProduct() {
     console.log('test');
 
-    this.productService.deleteProduct(id).subscribe(
+    this.productService.deleteProduct(this.productId).subscribe(
       (res) => {
         console.log(res);
         this.getAllProduct();
+        this.isDelete.set(false)
       },
       (error) => {
         console.log(error);
@@ -83,5 +86,16 @@ export class HomeComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+  checkDelete(id:number)
+  {
+    this.isDelete.set(true)
+    this.id.set(id)
+    this.productId=id
+  }
+  cancelDelete()
+  {
+    this.isDelete.set(false)
+    this.productId=0
   }
 }

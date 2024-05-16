@@ -3,6 +3,7 @@ import { Component, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TransactionService } from '../services/transaction.service';
 import Transaction from '../interface/tranaction';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-tranaction',
@@ -33,12 +34,12 @@ export class TransactionComponent implements OnInit {
   }
   add() {
     console.log(this.trans);
-    const data=JSON.stringify(this.trans)
-    console.log(data);
-    
-    this.transaction.CreateTransaction(data
-     ).subscribe(res => {
+
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    this.transaction.CreateTransaction(this.trans,headers).subscribe(res => {
       console.log(res);
+this.getAllTransaction()
+      // this.transactions.set([res,...this.transactions()])
     }, error => {
       console.log(error);
 

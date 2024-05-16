@@ -15,9 +15,8 @@ export class ProductService {
   private url='http://127.0.0.1:3000/product/'
   private token = localStorage.getItem('token')
 
-  createProduct(product:productDto|string,headers:HttpHeaders)
+  createProduct(product:productDto,headers:HttpHeaders)
   {
-   
 
    return this.http.post(this.url,product,{headers})
 
@@ -40,9 +39,9 @@ return this.http.post<Product[]|null>(this.url+`search/?title=${title}`,{})
   {
     return this.http.get<Product>(this.url+id)
   }
-  updateProduct(product:productDto|string,id:string|null)
+  updateProduct(product:productDto,id:string|null,headers:HttpHeaders)
   {
-    return this.http.patch(this.url+id,product)
+    return this.http.patch(this.url+id,product,{headers})
   }
   deleteProduct(id:number)
   {

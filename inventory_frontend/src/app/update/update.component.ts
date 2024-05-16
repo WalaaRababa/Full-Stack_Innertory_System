@@ -4,6 +4,7 @@ import { ProductService } from '../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-update',
@@ -41,11 +42,10 @@ updateProduct(event:Event)
 {
 event.preventDefault()
 console.log(this.product);
+const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-const data=JSON.stringify(this.product)
-console.log(data);
 
-this.data.updateProduct(data,this.id).subscribe(res=>
+this.data.updateProduct(this.product,this.id,headers).subscribe(res=>
   {
     console.log(res as any);
     

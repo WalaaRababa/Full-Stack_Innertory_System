@@ -51,7 +51,7 @@ export class UserService {
       if (!user) {
         throw new HttpException({
           status: HttpStatus.NOT_FOUND,
-          message: 'The email does not exist or The password you’ve entered is incorrect`',
+          message: 'The email does not exist or The password you’ve entered is incorrect',
         }, HttpStatus.NOT_FOUND, {
         });
       }
@@ -60,7 +60,7 @@ export class UserService {
         if (!isValid) {
           throw new HttpException({
             status: HttpStatus.NOT_FOUND,
-            message: 'The email does not exist or The password you’ve entered is incorrect`',
+            message: 'The email does not exist or The password you’ve entered is incorrect',
           }, HttpStatus.NOT_FOUND, {
           });
         }

@@ -14,9 +14,9 @@ export class TransactionService {
   private url='http://localhost:3000/transaction'
   private token = localStorage.getItem('token')
 
-  CreateTransaction(transaction:transactionDto|string)
+  CreateTransaction(transaction:transactionDto|string,headers:HttpHeaders)
   {
-    const headers=new HttpHeaders({ 'Authorization': `Bearer ${this.token}`})
+    // const headers=new HttpHeaders({ 'Authorization': `Bearer ${this.token}`})
 return this.http.post(this.url,transaction,{headers})    
   }
 getAllTransactionProc()

@@ -7,6 +7,7 @@ import User from '../interface/user';
 })
 export class AuthService {
   constructor(private http: HttpClient) { }
+  
   // private url='https://full-stack-innertory-system.onrender.com/user/'
     private url='http://localhost:3000/user/'
     
@@ -14,9 +15,16 @@ export class AuthService {
   {
     return this.http.post(this.url+'login',user)
   }
-// isLoggedIn()
-// {
-
-// }
+isLoggedIn()
+{
+const token=localStorage.getItem('token')
+if(token)
+  {
+    return true
+  }
+  else{
+    return false
+  }
+}
 
 }
