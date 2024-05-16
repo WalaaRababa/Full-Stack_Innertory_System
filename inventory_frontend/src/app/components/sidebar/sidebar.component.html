@@ -1,20 +1,19 @@
+
+ 
 <aside
-  class="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700"
+class="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700"
 >
-  <a href="#" class="mx-auto">
+  <a href="#" class="mx-auto" *ngIf="auth.isLoggedIn()===false">
     <img
-      class="w-auto h-6 sm:h-7"
-      src="https://merakiui.com/images/full-logo.svg"
+      class="h-64"
+      src=
+      "https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/dbyvy6yejbwnrod1nz1u"
       alt=""
     />
   </a>
 
   <div class="flex flex-col items-center mt-6 -mx-2">
-    <img
-      class="object-cover w-24 h-30 mx-2 rounded-full"
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG1O3oONERzol7-Wn_Fb66eQZ4KFUNorO__u4GosO8U1r-u6mko9t_2k3Szbugy_MVYJI&usqp=CAU"
-      alt="avatar"
-    />
+
     <h4 class="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-200">
 Inventory System
     </h4>

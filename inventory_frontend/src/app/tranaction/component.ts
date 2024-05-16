@@ -19,6 +19,8 @@ export class TransactionComponent implements OnInit {
   }
   constructor(private transaction: TransactionService) { }
   transactions = signal<Transaction[] | null>([])
+  isError = signal<boolean>(false);
+  messageError = signal<string>('');
   ngOnInit(): void {
     this.getAllTransaction()
   }
@@ -42,8 +44,13 @@ this.getAllTransaction()
       // this.transactions.set([res,...this.transactions()])
     }, error => {
       console.log(error);
-
+      this.isError.set(true);
+      this.messageError.set(error.error.message);
     }
     )
+  }
+  hideModal() {
+    this.isError.set(false);
+    this.messageError.set('');
   }
 }
